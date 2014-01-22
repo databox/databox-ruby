@@ -22,3 +22,5 @@ Or install it yourself as:
 
     $ gem install databox
 
+[travis-badge]: https://secure.travis-ci.org/otobrglez/databox.png?branch=master
+[travis]: http://travis-ci.org/otobrglez/databox
