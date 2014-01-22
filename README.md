@@ -1,4 +1,4 @@
-# Databox [![Build Status][travis-badge]][travis]
+# Databox [![Gem Version][fury-badge]][fury] [![Build Status][travis-badge]][travis]
 
 Ruby Gem for [Databox](http://databox.com/) Mobile Executive Dashboard.
 
@@ -24,5 +24,7 @@ Or install it yourself as:
 
     $ gem install databox
 
+[fury-badge]: https://badge.fury.io/rb/databox.png
+[fury]: http://badge.fury.io/rb/databox
 [travis-badge]: https://secure.travis-ci.org/otobrglez/databox.png?branch=master
 [travis]: http://travis-ci.org/otobrglez/databox
