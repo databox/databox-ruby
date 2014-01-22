@@ -1,0 +1,3 @@
+class Databox::Progress
+
+end

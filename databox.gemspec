@@ -24,8 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "shoulda-matchers"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "httparty"
-  spec.add_development_dependency "oj"
-  spec.add_development_dependency "multi_json"
   spec.add_development_dependency "dotenv"
+  spec.add_development_dependency "guard"
+  spec.add_development_dependency "guard-rspec"
 
 end

@@ -1,0 +1,3 @@
+class Databox::Pie
+
+end
