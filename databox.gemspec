@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Databox::VERSION
   spec.authors       = ["Oto Brglez"]
   spec.email         = ["otobrglez@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Ruby Gem for Databox - Mobile Executive Dashboard.}
+  spec.summary       = %q{API wrapper for Databox}
+  spec.homepage      = "https://github.com/otobrglez/databox"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,4 +20,12 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "shoulda-matchers"
+  spec.add_development_dependency "webmock"
+  spec.add_development_dependency "httparty"
+  spec.add_development_dependency "oj"
+  spec.add_development_dependency "multi_json"
+  spec.add_development_dependency "dotenv"
+
 end
