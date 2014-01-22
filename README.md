@@ -1,4 +1,4 @@
-# Databox
+# Databox [![Build Status][travis-badge]][travis]
 
 Ruby Gem for [Databox](http://databox.com/) Mobile Executive Dashboard.
 
