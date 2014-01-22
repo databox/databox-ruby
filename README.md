@@ -8,11 +8,11 @@ Ruby Gem for [Databox](http://databox.com/) Mobile Executive Dashboard.
 
 Add this line to your application's Gemfile:
 
-		gem 'databox'
+    gem 'databox'
 
 For most recent version please use:
 
-		gem 'databox', github: 'otobrglez/databox'
+    gem 'databox', github: 'otobrglez/databox'
 
 And then execute:
 
