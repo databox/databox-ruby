@@ -2,6 +2,8 @@
 
 Ruby Gem for [Databox](http://databox.com/) Mobile Executive Dashboard.
 
+**IMPORTANT** THIS GEM IS IN DEVELOPEMENT AND SHOULD NOT YES BE USED.
+
 - By [Oto Brglez](https://github.com/otobrglez)
 
 ## Installation
