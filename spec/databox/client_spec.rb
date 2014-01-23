@@ -1,21 +1,26 @@
 require "spec_helper"
 
-require "pp"
-
 describe Databox::Client do
-  let(:key){ "566m5nap2ls88sw44g440sww08s088sc" }
-  let(:url){ "https://app.databox.com" }
-  let(:token){ "2kw290l5m2gwgsw0" }
-  let(:config){ {url: url, key: key, token: token} }
+  let(:client){ Databox.client }
 
-  it "can push" do
-    client = Databox::Client.new(config)
+  context "#push" do
+    subject { client.push(data) }
 
-    puts client.push([{
-      date: "2014-01-22T12:00:00",
-      key: "name",
-      value: 1
-    }]).inspect
+    context "single" do
+      let(:data){ [{
+        date: "2014-01-22T12:00:00",
+        key: "name",
+        value: 1
+      }]}
+
+      it { expect(subject).to be_kind_of Databox::Response }
+    end
+
+  end
+
+  context "#logs" do
+    subject { client.logs }
+    it { expect(subject).to be_kind_of Array }
   end
 
 end

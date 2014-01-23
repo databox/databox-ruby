@@ -3,34 +3,24 @@ class Databox::Client
   format :json
   headers "User-Agent" => "Databox/#{Databox::VERSION} (Ruby)"
 
-  debug_output
+  debug_output if ENV["HTTPARTY_DEBUG"] == "1"
 
-  @@token = nil
-  def self.token
-    @@token
-  end
+  def token; Databox.configuration.token end
+  def key; Databox.configuration.key end
+  def url; Databox.configuration.url end
 
-  def token
-    @@token
-  end
+  def initialize
+    Databox.configure unless Databox.configured?
 
-  def initialize options={}
-    self.class.base_uri(options[:url]) unless options[:url].nil?
-    self.class.basic_auth(options[:key], "password") unless options[:key].nil?
-    @@token=options[:token] unless options[:token].nil?
-  end
-
-  def self.whoami
-    self
+    self.class.base_uri url
+    self.class.basic_auth key, "password"
   end
 
   def push data={}
-    handle self.class.post("/push/custom/#{self.token}", body: {
-      data: data
-    }.to_json)
+    handle self.class.post("/push/custom/#{self.token}",
+      body: { data: data }.to_json)
   end
 
-  #TODO: Error handling
   def logs
     handle self.class.get("/push/custom/#{self.token}/logs")
   end
@@ -44,7 +34,15 @@ class Databox::Client
       )
     end
 
-    Databox::Response.new(response.parsed_response["response"])
+    output = response.parsed_response
+
+    if output.is_a?(Hash) and output.keys.include?("response")
+      Databox::Response.new(output["response"])
+    elsif output.is_a?(Array)
+      output.map { |item| Databox::Response.new(item) }
+    else
+      output
+    end
   end
 end
 

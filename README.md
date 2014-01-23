@@ -12,10 +12,6 @@ Add this line to your application's Gemfile:
 
     gem 'databox'
 
-For most recent version please use:
-
-    gem 'databox', github: 'otobrglez/databox'
-
 And then execute:
 
     $ bundle
@@ -23,6 +19,22 @@ And then execute:
 Or install it yourself as:
 
     $ gem install databox
+
+## Usage
+
+    require "databox"
+
+    client = Databox.client
+
+    client.push(
+      [{
+        date: "2014-01-22T12:00:00",
+        key: "name",
+        value: 1
+      }]
+    )
+
+    client.logs
 
 ## Versions
 

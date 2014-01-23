@@ -1,9 +1,15 @@
 require "bundler/setup"
 
+require 'pry'
+#require 'webmock/rspec'
+#WebMock.disable_net_connect!(allow_localhost: true)
+
 require 'dotenv'
 Dotenv.load
 
 ENV["DATABOX_MODE"] = "test"
+ENV["DATABOX_KEY"] = "566m5nap2ls88sw44g440sww08s088sc"
+ENV["DATABOX_TOKEN"] = "2kw290l5m2gwgsw0"
 
 require "databox"
 
