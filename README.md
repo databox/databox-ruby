@@ -22,19 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
-    require "databox"
+```ruby
+require "databox"
 
-    client = Databox.client
+# Configure it like this
+Databox.configure do |c|
+  c.key = "Databox key"
+  c.token = "Databox token"
+end
 
-    client.push(
-      [{
-        date: "2014-01-22T12:00:00",
-        key: "name",
-        value: 1
-      }]
-    )
+client = Databox.client
 
-    client.logs
+client.push([{
+  date: "2014-01-22T12:00:00",
+  key: "name",
+  value: 1
+}])
+
+client.logs
+```
 
 ## Versions
 
