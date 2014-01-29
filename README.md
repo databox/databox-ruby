@@ -49,6 +49,12 @@ client.logs
 - MRI 1.9.3
 - MRI 2.0.0
 
+## Resources
+
+- [Databox Web App](https://app.databox.com/)
+- [Databox Developers Portal](https://developers.databox.com/)
+
+
 [fury-badge]: https://badge.fury.io/rb/databox.png
 [fury]: http://badge.fury.io/rb/databox
 [travis-badge]: https://secure.travis-ci.org/otobrglez/databox.png?branch=master

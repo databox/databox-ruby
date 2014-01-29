@@ -1,6 +1,7 @@
 class Databox::Client
   include HTTParty
   format :json
+
   headers "User-Agent" => "Databox/#{Databox::VERSION} (Ruby)"
 
   debug_output if ENV["HTTPARTY_DEBUG"] == "1"
@@ -17,8 +18,9 @@ class Databox::Client
   end
 
   def push data={}
-    handle self.class.post("/push/custom/#{self.token}",
-      body: { data: data }.to_json)
+    if validate data
+      handle self.class.post("/push/custom/#{self.token}", body: { data: data }.to_json)
+    end
   end
 
   def logs
@@ -44,7 +46,34 @@ class Databox::Client
       output
     end
   end
+
+  def validate data
+    return data.map do |dp|
+      validate(dp)
+    end if data.is_a?(Array)
+
+    errors = []
+    errors.push("Data is missing") if data.nil? or data == {}
+    errors.push("Key is required") if data[:key].nil?
+    errors.push("Value is required") if data[:value].nil?
+
+    errors.push("Date format is invalid") if not(data[:date].nil?) and (Date.iso8601(data[:date]) rescue false) == false
+    errors.push("Key format is invalid") unless data[:key] =~/^[a-zA-Z0-9_\.\@]*$/
+
+    unless errors.empty?
+      invalid_record = Databox::InvalidRecord.new "Payload is invalid"
+      invalid_record.errors = errors
+      raise invalid_record
+    end
+
+    true
+  end
+end
+
+class Databox::InvalidRecord < StandardError
+  attr_accessor :errors
 end
 
 class Databox::ClientError < StandardError; end
+
 class Databox::Response < OpenStruct; end

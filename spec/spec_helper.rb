@@ -1,15 +1,23 @@
 require "bundler/setup"
 
+if ENV['COVERAGE']
+  require 'simplecov'
+  SimpleCov.start
+end
+
 require 'pry'
-#require 'webmock/rspec'
-#WebMock.disable_net_connect!(allow_localhost: true)
+
+# if ENV["NO_WEBMOCK"] != "1"
+#   require 'webmock/rspec'
+#   WebMock.disable_net_connect!(allow_localhost: false)
+# end
 
 require 'dotenv'
 Dotenv.load
 
-ENV["DATABOX_MODE"] = "test"
-ENV["DATABOX_KEY"] = "566m5nap2ls88sw44g440sww08s088sc"
-ENV["DATABOX_TOKEN"] = "2kw290l5m2gwgsw0"
+ENV["DATABOX_MODE"]   = "test"
+ENV["DATABOX_KEY"]    ||= "8s0igg41718gos00wwc40gkokwcowk84"
+ENV["DATABOX_TOKEN"]  ||= "zqa9z737mxw4ck84"
 
 require "databox"
 
@@ -23,3 +31,4 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
