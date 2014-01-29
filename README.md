@@ -43,6 +43,7 @@ client.logs
 ```ruby
 messages = Databox::Messages.new "just_messages"
 messages.add "I was here"
+messages.add "Second message"
 messages.save
 ```
 
