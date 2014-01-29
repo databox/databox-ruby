@@ -1,0 +1,3 @@
+class Databox::Widget
+
+end

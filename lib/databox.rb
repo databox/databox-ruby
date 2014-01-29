@@ -1,16 +1,11 @@
 require "httparty"
 
 module Databox
-  autoload :VERSION,  "databox/version"
-
+  autoload :VERSION,        "databox/version"
   autoload :Client,         "databox/client"
-  autoload :Pipeline,       "databox/pipeline"
-  autoload :Funnel,         "databox/funnel"
-  autoload :Pie,            "databox/pie"
-  autoload :Progress,       "databox/progress"
-  autoload :Table,          "databox/table"
-  autoload :Message,        "databox/message"
   autoload :Configuration,  "databox/configuration"
+  autoload :Integration,    "databox/integration"
+  autoload :Messages,        "databox/messages"
 
   class << self
     attr_accessor :configuration

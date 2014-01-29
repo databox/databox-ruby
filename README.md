@@ -22,25 +22,30 @@ Or install it yourself as:
 
 ## Usage
 
+### Client
+
+You can use Databox::Client directly to insert raw KPIs. This is done by invoking Databox::Client and pushing Hash or Array of Hashes to it.
+
 ```ruby
-require "databox"
-
-# Configure it like this
-Databox.configure do |c|
-  c.key = "Databox key"
-  c.token = "Databox token"
-end
-
 client = Databox.client
 
 client.push([{
-  date: "2014-01-22T12:00:00",
   key: "name",
+  date: "2014-01-22T12:00:00",
   value: 1
 }])
 
 client.logs
 ```
+
+### Messages
+
+```ruby
+messages = Databox::Messages.new "just_messages"
+messages.add "I was here"
+messages.save
+```
+
 
 ## Versions
 

@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: nginx/1.4.4
+Date: Wed, 29 Jan 2014 15:57:05 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: PHP/5.4.23
+Set-Cookie: zep_uid=128b1cjukp7n899ajdjncp5om6; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+
+{"response":{"type":"success","message":"Items stored: 1"}}

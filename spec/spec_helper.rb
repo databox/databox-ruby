@@ -6,13 +6,13 @@ if ENV['COVERAGE']
 end
 
 require 'pry'
-
-# if ENV["NO_WEBMOCK"] != "1"
-#   require 'webmock/rspec'
-#   WebMock.disable_net_connect!(allow_localhost: false)
-# end
-
 require 'dotenv'
+
+if ENV["NO_WEBMOCK"] != "1"
+  require 'webmock/rspec'
+  WebMock.disable_net_connect!(allow_localhost: false)
+end
+
 Dotenv.load
 
 ENV["DATABOX_MODE"]   = "test"
@@ -20,6 +20,11 @@ ENV["DATABOX_KEY"]    ||= "8s0igg41718gos00wwc40gkokwcowk84"
 ENV["DATABOX_TOKEN"]  ||= "zqa9z737mxw4ck84"
 
 require "databox"
+
+def request_from file
+  file = "#{file}.txt" unless file =~ /\.txt$/
+  File.new("./spec/requests/#{file}")
+end
 
 RSpec.configure do |config|
   config.fail_fast = ENV['RSPEC_FAIL_FAST'] == "1"

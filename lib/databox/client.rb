@@ -6,7 +6,13 @@ class Databox::Client
 
   debug_output if ENV["HTTPARTY_DEBUG"] == "1"
 
-  def token; Databox.configuration.token end
+  default_timeout 1 if ENV["DATABOX_MODE"] == "test"
+
+  attr_accessor :token
+  def token
+    @token || Databox.configuration.token
+  end
+
   def key; Databox.configuration.key end
   def url; Databox.configuration.url end
 
@@ -19,6 +25,7 @@ class Databox::Client
 
   def push data={}
     if validate data
+      data = [data] unless data.is_a?(Array)
       handle self.class.post("/push/custom/#{self.token}", body: { data: data }.to_json)
     end
   end
@@ -55,7 +62,7 @@ class Databox::Client
     errors = []
     errors.push("Data is missing") if data.nil? or data == {}
     errors.push("Key is required") if data[:key].nil?
-    errors.push("Value is required") if data[:value].nil?
+    # errors.push("Value is required") if data[:value].nil?
 
     errors.push("Date format is invalid") if not(data[:date].nil?) and (Date.iso8601(data[:date]) rescue false) == false
     errors.push("Key format is invalid") unless data[:key] =~/^[a-zA-Z0-9_\.\@]*$/
@@ -76,4 +83,8 @@ end
 
 class Databox::ClientError < StandardError; end
 
-class Databox::Response < OpenStruct; end
+class Databox::Response < OpenStruct
+  def success?
+    self[:type]=="success"
+  end
+end
