@@ -1,3 +1,0 @@
-class Databox::Funnel
-
-end

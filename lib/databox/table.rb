@@ -1,3 +1,0 @@
-class Databox::Table
-
-end

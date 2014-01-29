@@ -1,3 +1,0 @@
-class Databox::Pipeline
-
-end
