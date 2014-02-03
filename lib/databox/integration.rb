@@ -119,3 +119,7 @@ class Databox::LineChart < Databox::Integration
 end
 
 class Databox::BarChart < Databox::LineChart; end;
+
+class Databox::Compare < Databox::LineChart; end;
+
+class Databox::Interval < Databox::LineChart; end;

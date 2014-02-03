@@ -93,6 +93,26 @@ chart.add 20,   "2014-02-03"
 chart.save
 ```
 
+### Compare
+```ruby
+compare = Databox::BarChart.new "my_compare"
+compare.add 40,   "2014-01-29"
+compare.add 100,  "2014-02-01"
+compare.add 500,  "2014-02-02"
+compare.add 20,   "2014-02-03"
+compare.save
+```
+
+### Interval
+```ruby
+interval = Databox::BarChart.new "my_interval"
+interval.add 40,   "2014-01-29"
+interval.add 100,  "2014-02-01"
+interval.add 500,  "2014-02-02"
+interval.add 20,   "2014-02-03"
+interval.save
+```
+
 ### Pipeline
 ```ruby
 pipeline = Databox::Pipeline.new "pipe_visits"

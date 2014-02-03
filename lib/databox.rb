@@ -6,10 +6,12 @@ module Databox
   autoload :Configuration,  "databox/configuration"
   autoload :Integration,    "databox/integration"
 
-
   autoload :BigNumber,      "databox/integration"
   autoload :LineChart,      "databox/integration"
   autoload :BarChart,       "databox/integration"
+  autoload :Compare,        "databox/integration"
+  autoload :Interval,       "databox/integration"
+
   autoload :Pipeline,       "databox/integration"
   autoload :Funnel,         "databox/integration"
   autoload :Pie,            "databox/integration"
