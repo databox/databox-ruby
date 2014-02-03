@@ -41,6 +41,8 @@ Databox gem support following widgets
 - [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline)
 - [Funnel](https://developers.databox.com/push/v1/widgets/funnel)
 - [Pie](https://developers.databox.com/push/v1/widgets/pie)
+- [Progress](https://developers.databox.com/push/v1/widgets/progress)
+- Table
 - [Messages](https://developers.databox.com/push/v1/widgets/messages)
 
 ### Pipeline
