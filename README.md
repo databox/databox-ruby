@@ -27,6 +27,8 @@ Databox gem support following widgets
 | Widget         | Implemented   | Example                        | Databox Documentation
 | -------------- | :-----------: | ------------------------------ | ----------------------
 | Big Number     | Yes           | [Example](#big-number)         | [Basic Widgets / Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
+| Line Chart     | Yes           | [Example](#line-chart)         | [Basic Widgets / Line Chart](https://developers.databox.com/push/v1/widgets/main/#line-chart-and-bar-chart)
+| Bar Chart      | Yes           | [Example](#bar-chart)          | [Basic Widgets / Bar Chart](https://developers.databox.com/push/v1/widgets/main/#line-chart-and-bar-chart)
 | Pipeline       | Yes           | [Example](#pipeline)           | [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline/)
 | Funnel         | Yes           | [Example](#funnel)             | [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
 | Pie            | Yes           | [Example](#pie)                | [Pie](https://developers.databox.com/push/v1/widgets/pie/)
@@ -46,6 +48,27 @@ number_dated = Databox::BigNumber.new "just_number", date: "2014-02-03"
 number_dated.set 10_000, "2014-02-03"
 number_dated.save
 
+```
+
+### Line Chart
+```ruby
+chart = Databox::LineChart.new "my_line"
+chart.add 40,   "2014-01-29"
+chart.add 100,  "2014-02-01"
+chart.add 500,  "2014-02-02"
+chart.add 20,   "2014-02-03"
+chart.save
+
+```
+
+### Bar Chart
+```ruby
+chart = Databox::BarChart.new "my_bar"
+chart.add 40,   "2014-01-29"
+chart.add 100,  "2014-02-01"
+chart.add 500,  "2014-02-02"
+chart.add 20,   "2014-02-03"
+chart.save
 ```
 
 ### Pipeline

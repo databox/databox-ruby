@@ -16,6 +16,7 @@ class Databox::Integration < Databox::Client
   def save
     if push(to_data).success?
       @list = []
+      @set_item = nil
       true
     else
       false
@@ -54,10 +55,14 @@ class Databox::Pipeline < Databox::Integration
 
 end
 
+
+
+
 #TODO: Add support for icons
 #TODO: Add support for changes
 class Databox::Funnel < Databox::Pipeline; end;
 class Databox::Pie < Databox:: Pipeline; end;
+
 
 
 class Databox::Progress < Databox::Integration
@@ -80,6 +85,8 @@ class Databox::Progress < Databox::Integration
 
 end
 
+
+
 class Databox::BigNumber < Databox::Integration
   def set number, date=nil
     date ||= @date
@@ -93,3 +100,22 @@ class Databox::BigNumber < Databox::Integration
   end
 end
 
+
+
+class Databox::LineChart < Databox::Integration
+
+  def add value, date=nil
+    date ||= @date
+    @list.push [value, date]
+  end
+
+  def to_data
+    @list.map do |i|
+      out = {key: name, value: i.first}
+      out.merge!({date: i[1]}) unless i[1].nil?
+      out
+    end
+  end
+end
+
+class Databox::BarChart < Databox::LineChart; end;

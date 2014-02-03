@@ -8,6 +8,8 @@ module Databox
 
 
   autoload :BigNumber,      "databox/integration"
+  autoload :LineChart,      "databox/integration"
+  autoload :BarChart,       "databox/integration"
   autoload :Pipeline,       "databox/integration"
   autoload :Funnel,         "databox/integration"
   autoload :Pie,            "databox/integration"
