@@ -39,15 +39,6 @@ Databox gem support following widgets
 - Databox::Pipeline
 - Databox::Messages
 
-### Messages
-
-```ruby
-messages = Databox::Messages.new "just_messages"
-messages.add "I was here"
-messages.add "Second message"
-messages.save
-```
-
 ### Pipeline
 ```ruby
 pipeline = Databox::Pipeline.new "pipe_visits"
@@ -55,6 +46,25 @@ pipeline.add "Negotiation", 1121603
 pipeline.add "Proposal",    3245927
 pipeline.add "Solution",    10726397
 pipeline.save
+```
+
+### Funnel
+```ruby
+funnel = Databox::Funnel.new "funnel_simple"
+funnel.add "Requests sent",   33_342
+funnel.add "New Accounts",    25_350
+funnel.add "Viewed results",  8_930
+funnel.add "Return Visits",   3_580
+funnel.save
+```
+
+### Messages
+
+```ruby
+messages = Databox::Messages.new "just_messages"
+messages.add "I was here"
+messages.add "Second message"
+messages.save
 ```
 
 ## Versions

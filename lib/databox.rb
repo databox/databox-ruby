@@ -7,6 +7,7 @@ module Databox
   autoload :Integration,    "databox/integration"
 
   autoload :Pipeline,       "databox/integration"
+  autoload :Funnel,         "databox/integration"
   autoload :Messages,       "databox/integration"
 
 
