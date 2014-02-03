@@ -23,8 +23,6 @@ class Databox::Integration < Databox::Client
 
 end
 
-#### Widgets
-
 #TODO: Add support for icons
 class Databox::Messages < Databox::Integration
 

@@ -85,6 +85,6 @@ class Databox::ClientError < StandardError; end
 
 class Databox::Response < OpenStruct
   def success?
-    self[:type] == "success"
+    self.type == "success"
   end
 end

@@ -67,6 +67,7 @@ describe Databox::Client do
 
       it { expect(response).to be_kind_of(Databox::Response) }
       it { expect(response).to be_success }
+
     end
 
     # #TODO: Validation on server is down.
