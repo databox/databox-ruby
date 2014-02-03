@@ -24,13 +24,16 @@ Or install it yourself as:
 
 Databox gem support following widgets
 
-- [Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
-- [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline/)
-- [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
-- [Pie](https://developers.databox.com/push/v1/widgets/pie/)
-- [Progress](https://developers.databox.com/push/v1/widgets/progress/)
-- Table
-- [Messages](https://developers.databox.com/push/v1/widgets/messages/)
+| Widget         | Example                        | Docs                                                                         |
+| -------------- | ------------------------------ | -----------------------------------------------------------------------------|
+| Big Number     | [Example](#big-number)         | [Docs](https://developers.databox.com/push/v1/widgets/main/#big-number)      |
+| Pipeline       | [Example](#pipeline)           | [Docs](https://developers.databox.com/push/v1/widgets/pipeline/)             |
+| Funnel         | [Example](#funnel)             | [Docs](https://developers.databox.com/push/v1/widgets/funnel/)               |
+| Pie            | [Example](#pie)                | [Docs](https://developers.databox.com/push/v1/widgets/pie/)                  |
+| Progress       | [Example](#progress)           | [Docs](https://developers.databox.com/push/v1/widgets/progress/)             |
+| Table          | [Example](#table)              | [Docs](https://developers.databox.com/push/v1/widgets/table/)                |
+| Messages       | [Example](#messages)           | [Docs](https://developers.databox.com/push/v1/widgets/messages/)             |
+
 
 ### Big Number
 ```ruby
@@ -91,6 +94,8 @@ messages.add "I was here"
 messages.add "Second message"
 messages.save
 ```
+
+## Using client directly
 
 You can also use Databox::Client directly to insert raw KPIs. This is done by invoking Databox::Client and pushing Hash or Array of Hashes to it.
 
