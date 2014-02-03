@@ -36,6 +36,25 @@ Databox gem support following widgets
 | Table          | No            |                                |
 | Messages       | Yes           | [Example](#messages)           | [Messages](https://developers.databox.com/push/v1/widgets/messages/)
 
+Before using Databox gem you have to initialize it with key and token. This are ways that you can use.
+
+1. Within simple initializer
+
+  ```ruby
+  Databox.configure do |c|
+    c.token   = "YOUR_TOKEN"
+    c.key     = "YOUR_KEY"
+  end
+  ```
+
+2. By setting ENV variables ```DATABOX_KEY``` and ```DATABOX_TOKEN```
+
+3. If your are using custom integration with different key please use ```id```.
+
+  ```ruby
+  chart = Databox::LineChart.new "my_line", id: "OTHER_KEY"
+  ```
+
 ### Big Number
 ```ruby
 number = Databox::BigNumber.new "just_number"
