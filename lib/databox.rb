@@ -6,6 +6,8 @@ module Databox
   autoload :Configuration,  "databox/configuration"
   autoload :Integration,    "databox/integration"
 
+
+  autoload :BigNumber,      "databox/integration"
   autoload :Pipeline,       "databox/integration"
   autoload :Funnel,         "databox/integration"
   autoload :Pie,            "databox/integration"

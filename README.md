@@ -38,12 +38,20 @@ puts client.logs
 
 Databox gem support following widgets
 
+- [Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
 - [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline)
 - [Funnel](https://developers.databox.com/push/v1/widgets/funnel)
 - [Pie](https://developers.databox.com/push/v1/widgets/pie)
 - [Progress](https://developers.databox.com/push/v1/widgets/progress)
 - Table
 - [Messages](https://developers.databox.com/push/v1/widgets/messages)
+
+### Big Number
+```ruby
+number = Databox::BigNumber.new "just_number"
+number.set 5000
+number.save
+```
 
 ### Pipeline
 ```ruby

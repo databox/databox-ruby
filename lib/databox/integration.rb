@@ -78,8 +78,18 @@ class Databox::Progress < Databox::Integration
     ]
   end
 
-
 end
 
+class Databox::BigNumber < Databox::Integration
+  def set number, date=nil
+    date ||= @date
+    @set_item = [number, date]
+  end
 
+  def to_data
+    out = {key: name, value: @set_item.first}
+    out.merge!({date: @set_item[1]}) unless @set_item[1].nil?
+    out
+  end
+end
 
