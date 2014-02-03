@@ -51,6 +51,13 @@ Databox gem support following widgets
 number = Databox::BigNumber.new "just_number"
 number.set 5000
 number.save
+
+# You can set date on initialize
+number_dated = Databox::BigNumber.new "just_number", date: "2014-02-03"
+# Or when setting number
+number_dated.set 10_000, "2014-02-03"
+number_dated.save
+
 ```
 
 ### Pipeline
