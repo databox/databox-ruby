@@ -33,7 +33,7 @@ Before using Databox gem you have to initialize it with key and token. There are
   end
   ```
 
-- By setting ENV variables ```DATABOX_KEY``` and ```DATABOX_TOKEN```
+- By setting system ```ENV``` variables ```DATABOX_KEY``` and ```DATABOX_TOKEN```
 
 - If your are using custom integration with different key please use ```id```.
 
