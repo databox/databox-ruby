@@ -5,7 +5,10 @@ module Databox
   autoload :Client,         "databox/client"
   autoload :Configuration,  "databox/configuration"
   autoload :Integration,    "databox/integration"
-  autoload :Messages,        "databox/messages"
+
+  autoload :Pipeline,       "databox/integration"
+  autoload :Messages,       "databox/integration"
+
 
   class << self
     attr_accessor :configuration

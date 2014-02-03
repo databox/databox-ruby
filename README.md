@@ -38,6 +38,11 @@ client.push([{
 client.logs
 ```
 
+Databox gem support following widgets
+
+- Databox::Pipeline
+- Databox::Messages
+
 ### Messages
 
 ```ruby
@@ -47,6 +52,16 @@ messages.add "Second message"
 messages.save
 ```
 
+### Pipeline
+```ruby
+pipeline = Databox::Pipeline.new "pipe_visits"
+pipeline.add "Negotiation", 1121603
+pipeline.add "Proposal",    3245927
+pipeline.add "Solution",    10726397
+pipeline.add "Meeting",     210310738
+pipeline.add "Initiated",   2315123
+pipeline.save
+```
 
 ## Versions
 
