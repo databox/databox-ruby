@@ -43,17 +43,19 @@ Before using Databox gem you have to initialize it with key and token. There are
 
 Databox gem support following widgets
 
-| Widget         | Implemented   | Example                        | Databox Documentation
-| -------------- | :-----------: | ------------------------------ | ----------------------
-| Big Number     | Yes           | [Example](#big-number)         | [Basic Widgets / Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
-| Line Chart     | Yes           | [Example](#line-chart)         | [Basic Widgets / Line Chart](https://developers.databox.com/push/v1/widgets/main/#line-chart-and-bar-chart)
-| Bar Chart      | Yes           | [Example](#bar-chart)          | [Basic Widgets / Bar Chart](https://developers.databox.com/push/v1/widgets/main/#line-chart-and-bar-chart)
-| Pipeline       | Yes           | [Example](#pipeline)           | [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline/)
-| Funnel         | Yes           | [Example](#funnel)             | [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
-| Pie            | Yes           | [Example](#pie)                | [Pie](https://developers.databox.com/push/v1/widgets/pie/)
-| Progress       | Yes           | [Example](#progress)           | [Progress](https://developers.databox.com/push/v1/widgets/progress/)
-| Table          | No            |                                |
-| Messages       | Yes           | [Example](#messages)           | [Messages](https://developers.databox.com/push/v1/widgets/messages/)
+| Widget          | Implemented   | Example                        | Databox Documentation
+| --------------- | :-----------: | ------------------------------ | ----------------------
+| Big Number      | Yes           | [Example](#big-number)         | [Basic Widgets / Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
+| Compare         | Yes           | [Example](#compare)            | [Basic Widgets / Compare](https://developers.databox.com/push/v1/widgets/main/#compare)
+| Internal values | Yes           | [Example](#interval-values)    | [Basic Widgets / Interva Values](https://developers.databox.com/push/v1/widgets/main/#interval-values)
+| Line Chart      | Yes           | [Example](#line-chart)         | [Basic Widgets / Line Chart](https://developers.databox.com/push/v1/widgets/main/#line-chart-and-bar-chart)
+| Bar Chart       | Yes           | [Example](#bar-chart)          | [Basic Widgets / Bar Chart](https://developers.databox.com/push/v1/widgets/main/#line-chart-and-bar-chart)
+| Pipeline        | Yes           | [Example](#pipeline)           | [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline/)
+| Funnel          | Yes           | [Example](#funnel)             | [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
+| Pie             | Yes           | [Example](#pie)                | [Pie](https://developers.databox.com/push/v1/widgets/pie/)
+| Progress        | Yes           | [Example](#progress)           | [Progress](https://developers.databox.com/push/v1/widgets/progress/)
+| Table           | No            |                                |
+| Messages        | Yes           | [Example](#messages)           | [Messages](https://developers.databox.com/push/v1/widgets/messages/)
 
 
 ### Big Number
