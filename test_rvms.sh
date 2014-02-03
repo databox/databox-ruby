@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-
-
+# Define different RVMs
 declare -a RVMS=(\
   'ruby-1.9.3-p484@databox' \
   'ruby-2.0.0-p353@databox' \
 )
 
+# Loop over RSMs and exec RSpec
 for r in "${RVMS[@]}"; do
   set -o verbose
   echo "Testing $r"
