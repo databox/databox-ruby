@@ -2,13 +2,6 @@ require "spec_helper"
 
 describe Databox::Pie do
 
-  before do
-    Databox.configure do |c|
-      c.token   = "218oxlmk3ikkogo0"
-      c.key = "3s70rekrhcmcgkccssckc448kgw04ssk"
-    end
-  end
-
   let(:pie){ Databox::Pie.new "my_pie" }
 
   context "simple" do

@@ -75,12 +75,8 @@ pie.save
 
 ### Progress
 ```ruby
-progress = Databox::Progress.new "my_prgress"
-progress.add "A", 3_014
-progress.add "B", 29_496
-progress.add "C", 9_121
-progress.add "D", 20_390
-progress.add "E", 7_423
+progress = Databox::Progress.new "my_progress"
+progress.set "33% done", 100, 33
 pie.save
 ```
 

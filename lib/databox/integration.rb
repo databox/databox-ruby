@@ -1,6 +1,6 @@
 class Databox::Integration < Databox::Client
 
-  attr_accessor :name, :list, :date
+  attr_accessor :name, :list, :set_item, :date
 
   def initialize name, options={date: nil, id: nil}
     super()
@@ -10,6 +10,7 @@ class Databox::Integration < Databox::Client
     @token  = options[:id]    unless options[:id].nil?
 
     @list = []
+    @set_item = nil
   end
 
   def save
@@ -57,4 +58,28 @@ end
 #TODO: Add support for changes
 class Databox::Funnel < Databox::Pipeline; end;
 class Databox::Pie < Databox:: Pipeline; end;
+
+
+class Databox::Progress < Databox::Integration
+
+  def add *args
+    raise "Progress does not support add!"
+  end
+
+  def set message, max, value
+    @set_item = [message, max, value]
+  end
+
+  def to_data
+    [
+      { key: "#{name}@label",     value: @set_item.first },
+      { key: "#{name}@max_value", value: @set_item[1] },
+      { key: "#{name}",           value: @set_item.last },
+    ]
+  end
+
+
+end
+
+
 
