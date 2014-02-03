@@ -1,6 +1,6 @@
 # Databox
 
-[![Gem Version][fury-badge]][fury] [![Build Status][travis-badge]][travis] [![Coverage Status](https://coveralls.io/repos/otobrglez/databox/badge.png)](https://coveralls.io/r/otobrglez/databox)
+[![Gem Version][fury-badge]][fury] [![Build Status][travis-badge]][travis] [![Coverage Status](https://coveralls.io/repos/otobrglez/databox/badge.png?branch=master)](https://coveralls.io/r/otobrglez/databox?branch=master)
 
 Ruby Gem for [Databox](http://databox.com/) - Mobile Executive Dashboard.
 
@@ -70,6 +70,17 @@ pie.add "B", 29_496
 pie.add "C", 9_121
 pie.add "D", 20_390
 pie.add "E", 7_423
+pie.save
+```
+
+### Progress
+```ruby
+progress = Databox::Progress.new "my_prgress"
+progress.add "A", 3_014
+progress.add "B", 29_496
+progress.add "C", 9_121
+progress.add "D", 20_390
+progress.add "E", 7_423
 pie.save
 ```
 

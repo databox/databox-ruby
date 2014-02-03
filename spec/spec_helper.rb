@@ -1,7 +1,9 @@
 require "bundler/setup"
 
-require 'coveralls'
-Coveralls.wear!
+if ENV["TRAVIS"]=="true"
+  require 'coveralls'
+  Coveralls.wear!
+end
 
 if ENV['COVERAGE']
   require 'simplecov'
