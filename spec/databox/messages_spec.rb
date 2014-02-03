@@ -1,6 +1,5 @@
 require "spec_helper"
 
-#TODO: Wrap around Widget
 describe Databox::Messages do
 
   let(:messages){ Databox::Messages.new("just_messages") }
@@ -29,7 +28,7 @@ describe Databox::Messages do
         }
       end
 
-      context "simple" do
+      context "multiple" do
         before {
           stub_request(:post, /push/)
           .to_return { request_from "multiple_message" }

@@ -37,6 +37,7 @@ class Databox::Messages < Databox::Integration
 end
 
 #TODO: Add support for icons
+#TODO: Add support for changes
 class Databox::Pipeline < Databox::Integration
 
   def add message, value
@@ -44,7 +45,10 @@ class Databox::Pipeline < Databox::Integration
   end
 
   def to_data
-    { key: "#{name}", value: list }
+    [
+      { key: "#{name}@labels", value: list.map(&:first)     },
+      { key: "#{name}@values", value: list.map{|e| e[1] }   },
+    ]
   end
 
 end
