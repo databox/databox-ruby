@@ -22,29 +22,15 @@ Or install it yourself as:
 
 ## Usage
 
-You can use Databox::Client directly to insert raw KPIs. This is done by invoking Databox::Client and pushing Hash or Array of Hashes to it.
-
-```ruby
-client = Databox.client
-
-client.push([{
-  key: "name",
-  date: "2014-01-22T12:00:00",
-  value: 1
-}])
-
-puts client.logs
-```
-
 Databox gem support following widgets
 
 - [Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
-- [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline)
-- [Funnel](https://developers.databox.com/push/v1/widgets/funnel)
-- [Pie](https://developers.databox.com/push/v1/widgets/pie)
-- [Progress](https://developers.databox.com/push/v1/widgets/progress)
+- [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline/)
+- [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
+- [Pie](https://developers.databox.com/push/v1/widgets/pie/)
+- [Progress](https://developers.databox.com/push/v1/widgets/progress/)
 - Table
-- [Messages](https://developers.databox.com/push/v1/widgets/messages)
+- [Messages](https://developers.databox.com/push/v1/widgets/messages/)
 
 ### Big Number
 ```ruby
@@ -104,6 +90,20 @@ messages = Databox::Messages.new "just_messages"
 messages.add "I was here"
 messages.add "Second message"
 messages.save
+```
+
+You can also use Databox::Client directly to insert raw KPIs. This is done by invoking Databox::Client and pushing Hash or Array of Hashes to it.
+
+```ruby
+client = Databox.client
+
+client.push([{
+  key: "name",
+  date: "2014-01-22T12:00:00",
+  value: 1
+}])
+
+puts client.logs
 ```
 
 ## Versions
