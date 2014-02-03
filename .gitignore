@@ -1,4 +1,5 @@
 *.sh
+!*test_*sh
 *.gem
 *.rbc
 .bundle
