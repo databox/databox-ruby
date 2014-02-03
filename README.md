@@ -24,16 +24,15 @@ Or install it yourself as:
 
 Databox gem support following widgets
 
-| Widget         | Example                        | Docs                                                                         |
-| -------------- | ------------------------------ | -----------------------------------------------------------------------------|
-| Big Number     | [Example](#big-number)         | [Docs](https://developers.databox.com/push/v1/widgets/main/#big-number)      |
-| Pipeline       | [Example](#pipeline)           | [Docs](https://developers.databox.com/push/v1/widgets/pipeline/)             |
-| Funnel         | [Example](#funnel)             | [Docs](https://developers.databox.com/push/v1/widgets/funnel/)               |
-| Pie            | [Example](#pie)                | [Docs](https://developers.databox.com/push/v1/widgets/pie/)                  |
-| Progress       | [Example](#progress)           | [Docs](https://developers.databox.com/push/v1/widgets/progress/)             |
-| Table          | [Example](#table)              | [Docs](https://developers.databox.com/push/v1/widgets/table/)                |
-| Messages       | [Example](#messages)           | [Docs](https://developers.databox.com/push/v1/widgets/messages/)             |
-
+| Widget         | Implemented   | Example                        | Databox Documentation
+| -------------- | :-----------: | ------------------------------ | ----------------------
+| Big Number     | Yes           | [Example](#big-number)         | [Basic Widgets / Big Number](https://developers.databox.com/push/v1/widgets/main/#big-number)
+| Pipeline       | Yes           | [Example](#pipeline)           | [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline/)
+| Funnel         | Yes           | [Example](#funnel)             | [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
+| Pie            | Yes           | [Example](#pie)                | [Pie](https://developers.databox.com/push/v1/widgets/pie/)
+| Progress       | Yes           | [Example](#progress)           | [Progress](https://developers.databox.com/push/v1/widgets/progress/)
+| Table          | No            | [Example](#table)              | [Table](https://developers.databox.com/push/v1/widgets/table/)
+| Messages       | Yes           | [Example](#messages)           | [Messages](https://developers.databox.com/push/v1/widgets/messages/)
 
 ### Big Number
 ```ruby
