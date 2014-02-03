@@ -36,15 +36,17 @@ puts client.logs
 
 Databox gem support following widgets
 
-- Databox::Pipeline
-- Databox::Messages
+- [Pipeline](https://developers.databox.com/push/v1/widgets/pipeline)
+- [Funnel](https://developers.databox.com/push/v1/widgets/funnel)
+- [Pie](https://developers.databox.com/push/v1/widgets/pie)
+- [Messages](https://developers.databox.com/push/v1/widgets/messages)
 
 ### Pipeline
 ```ruby
 pipeline = Databox::Pipeline.new "pipe_visits"
-pipeline.add "Negotiation", 1121603
-pipeline.add "Proposal",    3245927
-pipeline.add "Solution",    10726397
+pipeline.add "Negotiation", 1_121_603
+pipeline.add "Proposal",    3_245_927
+pipeline.add "Solution",    10_726_397
 pipeline.save
 ```
 
@@ -56,6 +58,17 @@ funnel.add "New Accounts",    25_350
 funnel.add "Viewed results",  8_930
 funnel.add "Return Visits",   3_580
 funnel.save
+```
+
+### Pie
+```ruby
+pie = Databox::Pie.new "my_pie"
+pie.add "A", 3_014
+pie.add "B", 29_496
+pie.add "C", 9_121
+pie.add "D", 20_390
+pie.add "E", 7_423
+pie.save
 ```
 
 ### Messages

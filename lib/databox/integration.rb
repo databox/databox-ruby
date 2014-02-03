@@ -55,18 +55,6 @@ end
 
 #TODO: Add support for icons
 #TODO: Add support for changes
-class Databox::Funnel < Databox::Integration
-
-  def add message, value
-    @list.push [message, value]
-  end
-
-  def to_data
-    [
-      { key: "#{name}@labels", value: list.map(&:first)     },
-      { key: "#{name}@values", value: list.map{|e| e[1] }   },
-    ]
-  end
-
-end
+class Databox::Funnel < Databox::Pipeline; end;
+class Databox::Pie < Databox:: Pipeline; end;
 
