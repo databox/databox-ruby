@@ -2,11 +2,12 @@ class Databox::Integration < Databox::Client
 
   attr_accessor :name, :list, :date
 
-  def initialize name, date=nil, id=nil
+  def initialize name, options={date: nil, id: nil}
     super()
     @name = name
-    @date = date
-    @token = id unless id.nil?
+
+    @date   = options[:date]  unless options[:date].nil?
+    @token  = options[:id]    unless options[:id].nil?
 
     @list = []
   end

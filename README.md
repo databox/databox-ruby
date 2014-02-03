@@ -2,8 +2,6 @@
 
 Ruby Gem for [Databox](http://databox.com/) - Mobile Executive Dashboard.
 
-**IMPORTANT** THIS GEM IS IN DEVELOPEMENT AND SHOULD NOT BE USED.
-
 - By [Oto Brglez](https://github.com/otobrglez)
 
 ## Installation
@@ -22,8 +20,6 @@ Or install it yourself as:
 
 ## Usage
 
-### Client
-
 You can use Databox::Client directly to insert raw KPIs. This is done by invoking Databox::Client and pushing Hash or Array of Hashes to it.
 
 ```ruby
@@ -35,7 +31,7 @@ client.push([{
   value: 1
 }])
 
-client.logs
+puts client.logs
 ```
 
 Databox gem support following widgets
@@ -58,8 +54,6 @@ pipeline = Databox::Pipeline.new "pipe_visits"
 pipeline.add "Negotiation", 1121603
 pipeline.add "Proposal",    3245927
 pipeline.add "Solution",    10726397
-pipeline.add "Meeting",     210310738
-pipeline.add "Initiated",   2315123
 pipeline.save
 ```
 
