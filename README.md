@@ -1,4 +1,6 @@
-# Databox [![Gem Version][fury-badge]][fury] [![Build Status][travis-badge]][travis]
+# Databox
+
+[![Gem Version][fury-badge]][fury] [![Build Status][travis-badge]][travis] [![Coverage Status](https://coveralls.io/repos/otobrglez/databox/badge.png)](https://coveralls.io/r/otobrglez/databox)
 
 Ruby Gem for [Databox](http://databox.com/) - Mobile Executive Dashboard.
 
