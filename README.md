@@ -31,7 +31,7 @@ Databox gem support following widgets
 | Funnel         | Yes           | [Example](#funnel)             | [Funnel](https://developers.databox.com/push/v1/widgets/funnel/)
 | Pie            | Yes           | [Example](#pie)                | [Pie](https://developers.databox.com/push/v1/widgets/pie/)
 | Progress       | Yes           | [Example](#progress)           | [Progress](https://developers.databox.com/push/v1/widgets/progress/)
-| Table          | No            | [Example](#table)              | [Table](https://developers.databox.com/push/v1/widgets/table/)
+| Table          | No            |                                |
 | Messages       | Yes           | [Example](#messages)           | [Messages](https://developers.databox.com/push/v1/widgets/messages/)
 
 ### Big Number
