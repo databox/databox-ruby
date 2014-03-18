@@ -8,7 +8,7 @@ describe Databox::Messages do
     it { expect(messages.name).to eq "just_messages" }
 
     it {
-      expect { messages.add("Just message") }
+      expect { messages.add("Just message", "Number") }
       .to change { messages.list.size }.from(0).to(1)
     }
 
@@ -20,7 +20,7 @@ describe Databox::Messages do
           .to_return { request_from "simple_message" }
         }
 
-        before { messages.add("I was here") }
+        before { messages.add("I was here", "USD") }
 
         it {
           expect { messages.save }
@@ -35,8 +35,8 @@ describe Databox::Messages do
         }
 
         before do
-          messages.add "I was here"
-          messages.add "This is test"
+          messages.add("I was here", "Number")
+          messages.add("This is test", "EUR")
         end
 
         it {
