@@ -32,8 +32,10 @@ class Databox::Messages < Databox::Integration
   end
 
   def to_data
-    { key: "#{name}", value: list.map(&:first)           },
-    { key: "#{name}@icons", value: list.map{|e| e[1] }   },
+    [
+      { key: "#{name}", value: list.map(&:first)           },
+      { key: "#{name}@icons", value: list.map{|e| e[1] }   },
+    ]
   end
 
 end
