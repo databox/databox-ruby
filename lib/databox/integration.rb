@@ -25,15 +25,15 @@ class Databox::Integration < Databox::Client
 
 end
 
-#TODO: Add support for icons
 class Databox::Messages < Databox::Integration
 
-  def add message
-    @list.push message
+  def add message, icon
+    @list.push [message, icon]
   end
 
   def to_data
-    { key: "#{name}", value: list }
+    { key: "#{name}", value: list.map(&:first)           },
+    { key: "#{name}@icons", value: list.map{|e| e[1] }   },
   end
 
 end
