@@ -1,4 +1,4 @@
-:warning: Databox Push API has significally changed. This wrapper is outdated and is beeing rewritten! -[Oto](https://twitter.com/otobrglez) :warning:
+:warning: :warning: Databox Push API has significally changed. This wrapper is outdated and is beeing rewritten! -[Oto](https://twitter.com/otobrglez)
 
 # Databox
 
