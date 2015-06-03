@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["otobrglez@gmail.com"]
   spec.description   = %q{Ruby Gem for Databox - Mobile Executive Dashboard.}
   spec.summary       = %q{API wrapper for Databox}
-  spec.homepage      = "https://github.com/otobrglez/databox"
+  spec.homepage      = "https://github.com/databox/databox-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,8 +20,6 @@ Gem::Specification.new do |spec|
 
 
   spec.add_dependency "httparty"
-
-  #TODO: Use multi_json spec.add_dependency "multi_json"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
@@ -33,6 +31,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "simplecov"
-  spec.add_development_dependency "coveralls"
-
 end
