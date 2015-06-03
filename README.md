@@ -1,3 +1,5 @@
+:warning: Databox Push API has significally changed. This wrapper is outdated and is beeing rewritten! -[Oto](https://twitter.com/otobrglez) :warning:
+
 # Databox
 
 [![Gem Version][fury-badge]][fury] [![Build Status][travis-badge]][travis] [![Coverage Status](https://coveralls.io/repos/otobrglez/databox/badge.png?branch=master)](https://coveralls.io/r/otobrglez/databox?branch=master)
