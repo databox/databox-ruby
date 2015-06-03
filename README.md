@@ -192,5 +192,5 @@ puts client.logs
 
 [fury-badge]: https://badge.fury.io/rb/databox.png
 [fury]: http://badge.fury.io/rb/databox
-[travis-badge]: https://secure.travis-ci.org/otobrglez/databox.png?branch=master
-[travis]: http://travis-ci.org/otobrglez/databox
+[travis-badge]: https://secure.travis-ci.org/databox/databox-ruby.png?branch=v2
+[travis]: http://travis-ci.org/databox/databox-ruby
