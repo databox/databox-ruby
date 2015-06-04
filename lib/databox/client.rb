@@ -1,40 +1,57 @@
+require 'httparty'
+require 'json'
+
 class Databox::Client
   include HTTParty
   format :json
-
-  headers "User-Agent" => "Databox/#{Databox::VERSION} (Ruby)"
-
-  debug_output if ENV["HTTPARTY_DEBUG"] == "1"
-
+  headers 'User-Agent' => "Databox/#{Databox::VERSION} (Ruby)"
+  debug_output if [1, "1"].include?(ENV["HTTPARTY_DEBUG"])
   default_timeout 1 if ENV["DATABOX_MODE"] == "test"
-
-  attr_accessor :token
-  def token
-    @token || Databox.configuration.token
-  end
-
-  def key; Databox.configuration.key end
-  def url; Databox.configuration.url end
 
   def initialize
     Databox.configure unless Databox.configured?
 
-    self.class.base_uri url
-    self.class.basic_auth key, "password"
+    self.class.base_uri push_host
+    self.class.basic_auth push_token, ''
+    self.class.headers 'Content-Type' => 'application/json'
+    self
   end
 
-  def push data={}
+  def push_host
+    Databox.configuration.push_host
+  end
+
+  def push_token
+    Databox.configuration.push_token
+  end
+
+  def raw_push(path='/', data=nil)
+    self.class.post(path, data.nil? ? {} : JSON.dump({data: data}))
+  end
+
+  def push(key, value, date=nil)
+
+  end
+
+  def insert_all(rows=[])
+
+  end
+
+  def last_push
+    raw_push '/lastpushes/1'
+  end
+end
+
+=begin
+
+  def push(data={})
     if validate data
       data = [data] unless data.is_a?(Array)
       handle self.class.post("/push/custom/#{self.token}", body: { data: data }.to_json)
     end
   end
 
-  def logs
-    handle self.class.get("/push/custom/#{self.token}/logs")
-  end
-
-  def handle response
+  def handle(response)
     if response.code > 201
       raise Databox::ClientError.new(
         response.code.to_s+" - "+
@@ -54,7 +71,7 @@ class Databox::Client
     end
   end
 
-  def validate data
+  def validate(data)
     return data.map do |dp|
       validate(dp)
     end if data.is_a?(Array)
@@ -88,3 +105,5 @@ class Databox::Response < OpenStruct
     self.type == "success"
   end
 end
+
+=end

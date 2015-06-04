@@ -1,13 +1,8 @@
 class Databox::Configuration
-  attr_accessor \
-    :key,
-    :url,
-    :token
+  attr_accessor :push_token, :push_host
 
   def initialize
-    @url ||= ENV["DATABOX_URL"] || 'https://app.databox.com'
-    @key ||= ENV["DATABOX_KEY"]
-    @token ||= ENV["DATABOX_TOKEN"]
+    @push_host ||= 'https://push2new.databox.com'
+    @push_token ||= ENV['DATABOX_PUSH_TOKEN']
   end
-
 end
