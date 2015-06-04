@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pp'
 
 describe Databox::Client do
   before do
@@ -13,16 +14,12 @@ describe Databox::Client do
     it {
       r = client.push('sales.total', 1555)
 
-      puts r.inspect
+      pp r
     }
 
   end
 
   context 'last_push' do
-    it {
-      puts client.last_push.inspect
-    }
+    it { expect(client.last_push).not_to be_empty }
   end
-
-
 end
