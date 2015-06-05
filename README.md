@@ -20,15 +20,13 @@ Or install it yourself as:
 
 ## Initialisation
 
-Before push data to Databox you have to initialize it with token.
+Before pushing data to Databox you have to initialize it with token.
 
-- Within simple initializer
-
-  ```ruby
-  Databox.configure do |c|
+```ruby
+Databox.configure do |c|
     c.push_token   = "YOUR_TOKEN"
-  end
-  ```
+end
+```
 
 ## Usage 
 
@@ -58,11 +56,15 @@ Retrieving information from last push with `last_push`:
 
 ```ruby
 client.last_push
-# => [{"push"=>"{\"data\":[{\"$sales.total\":2000}]}",
-       "err"=>"[]",
-       "no_err"=>0,
-       "datetime"=>"2015-06-05T10:21:23.861Z",
-       "keys"=>"[\"132|sales.total\"]"}]
+
+# =>
+#[{
+#  "push"=>"{\"data\":[{\"$sales.total\":2000}]}",
+#  "err"=>"[]",
+#  "no_err"=>0,
+#  "datetime"=>"2015-06-05T10:21:23.861Z",
+#  "keys"=>"[\"132|sales.total\"]"
+#}]
 ```
 
 ## Resources
