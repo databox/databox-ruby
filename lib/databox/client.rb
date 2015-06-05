@@ -1,90 +1,60 @@
+require 'httparty'
+require 'json'
+
 class Databox::Client
   include HTTParty
   format :json
-
-  headers "User-Agent" => "Databox/#{Databox::VERSION} (Ruby)"
-
-  debug_output if ENV["HTTPARTY_DEBUG"] == "1"
-
+  headers 'User-Agent' => "Databox/#{Databox::VERSION} (Ruby)"
+  debug_output if [1, "1"].include?(ENV["HTTPARTY_DEBUG"])
   default_timeout 1 if ENV["DATABOX_MODE"] == "test"
-
-  attr_accessor :token
-  def token
-    @token || Databox.configuration.token
-  end
-
-  def key; Databox.configuration.key end
-  def url; Databox.configuration.url end
 
   def initialize
     Databox.configure unless Databox.configured?
 
-    self.class.base_uri url
-    self.class.basic_auth key, "password"
+    self.class.base_uri push_host
+    self.class.basic_auth push_token, ''
+    self.class.headers 'Content-Type' => 'application/json'
+    self
   end
 
-  def push data={}
-    if validate data
-      data = [data] unless data.is_a?(Array)
-      handle self.class.post("/push/custom/#{self.token}", body: { data: data }.to_json)
-    end
+  def push_host
+    Databox.configuration.push_host
   end
 
-  def logs
-    handle self.class.get("/push/custom/#{self.token}/logs")
+  def push_token
+    Databox.configuration.push_token
   end
 
-  def handle response
-    if response.code > 201
-      raise Databox::ClientError.new(
-        response.code.to_s+" - "+
-        response.parsed_response["error"]["type"]+" - "+
-        response.parsed_response["error"]["message"]
-      )
-    end
-
-    output = response.parsed_response
-
-    if output.is_a?(Hash) and output.keys.include?("response")
-      Databox::Response.new(output["response"])
-    elsif output.is_a?(Array)
-      output.map { |item| Databox::Response.new(item) }
-    else
-      output
-    end
+  # Sends data to actual end-point.
+  def raw_push(path='/', data=nil)
+    handle self.class.post(path, data.nil? ? {} : {body: JSON.dump({data: data})})
   end
 
-  def validate data
-    return data.map do |dp|
-      validate(dp)
-    end if data.is_a?(Array)
+  def handle(response)
+    response.parsed_response
+  end
 
-    errors = []
-    errors.push("Data is missing") if data.nil? or data == {}
-    errors.push("Key is required") if data[:key].nil?
-    # errors.push("Value is required") if data[:value].nil?
+  def process_kpi(options={})
+    options.delete_if { |k, _| [:date, 'date'].include?(k) }
 
-    errors.push("Date format is invalid") if not(data[:date].nil?) and (Date.iso8601(data[:date]) rescue false) == false
-    errors.push("Key format is invalid") unless data[:key] =~/^[a-zA-Z0-9_\.\@]*$/
-
-    unless errors.empty?
-      invalid_record = Databox::InvalidRecord.new "Payload is invalid"
-      invalid_record.errors = errors
-      raise invalid_record
+    %i{key value}.each do |k|
+      raise("Missing '#{k}'") if (options[k] || options[k.to_s]).nil?
     end
 
-    true
+    options["$#{(options['key'] || options[:key])}"] = options['value'] || options[:value]
+    options.delete_if { |k, _| [:key, 'key', :value, 'value'].include?(k) }
+    options
   end
-end
 
-class Databox::InvalidRecord < StandardError
-  attr_accessor :errors
-end
+  def push(key, value, date=nil)
+    raw_push('/', [process_kpi({key: key, value: value, date: date})])['status'] == 'ok'
+  end
 
-class Databox::ClientError < StandardError; end
+  def insert_all(rows=[])
+    raw_push('/', rows.map {|r| process_kpi(r) })['status'] == 'ok'
+  end
 
-class Databox::Response < OpenStruct
-  def success?
-    self.type == "success"
+  def last_push
+    raw_push '/lastpushes/1'
   end
 end

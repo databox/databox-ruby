@@ -1,34 +1,21 @@
-require "httparty"
-
 module Databox
-  autoload :VERSION,        "databox/version"
-  autoload :Client,         "databox/client"
-  autoload :Configuration,  "databox/configuration"
-  autoload :Integration,    "databox/integration"
-
-  autoload :BigNumber,      "databox/integration"
-  autoload :LineChart,      "databox/integration"
-  autoload :BarChart,       "databox/integration"
-  autoload :Compare,        "databox/integration"
-  autoload :Interval,       "databox/integration"
-
-  autoload :Pipeline,       "databox/integration"
-  autoload :Funnel,         "databox/integration"
-  autoload :Pie,            "databox/integration"
-  autoload :Progress,       "databox/integration"
-  autoload :Messages,       "databox/integration"
-
+  autoload :VERSION,        'databox/version'
+  autoload :Client,         'databox/client'
+  autoload :Configuration,  'databox/configuration'
 
   class << self
     attr_accessor :configuration
 
     def configured?
       return false if configuration.nil?
-      [configuration.token, configuration.key, configuration.url].compact.size == 3
+      [
+          configuration.push_host,
+          configuration.push_token
+      ].compact.size == 2
     end
 
     def client
-      @client ||= Databox::Client.new
+      @client ||= ::Client.new
     end
   end
 
@@ -36,5 +23,4 @@ module Databox
     self.configuration ||= Configuration.new
     yield configuration if block_given?
   end
-
 end

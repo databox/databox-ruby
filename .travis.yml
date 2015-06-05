@@ -1,7 +1,4 @@
-script: "bundle exec rspec"
-
-install: "travis_retry bundle install"
-
-rvm:
-  - 1.9.3
-  - 2.0.0
+install:
+  - "travis_retry bundle install"
+script:
+  - "bundle exec rspec --format doc --color"
