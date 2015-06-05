@@ -17,7 +17,7 @@ describe Databox::Client do
     it { expect { client.push(nil, nil) }.to raise_exception }
     it { expect { client.push('sales.total', nil) }.to raise_exception }
     it { expect { client.push(nil, 3000) }.to raise_exception }
-    it { expect { client.push('sales.total', 2000) }.to be_true }
+    it { expect(client.push('sales.total', 2000)).to eq true }
   end
 
   context 'insert_all' do
@@ -26,9 +26,9 @@ describe Databox::Client do
       {key: 'temp.ljx', value: 60.3},
     ])}.to raise_exception }
 
-    it { expect { client.insert_all([
+    it { expect(client.insert_all([
         {key: 'temp.ljx', value: 4.3},
         {key: 'temp.ljx', value: 1.3, date: '2015-01-01 09:00:00'},
-    ])}.to be_true }
+    ])).to eq true }
   end
 end
