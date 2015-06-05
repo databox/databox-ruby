@@ -8,7 +8,10 @@ module Databox
 
     def configured?
       return false if configuration.nil?
-      [configuration.push_host, configuration.push_token].compact.size == 2
+      [
+          configuration.push_host,
+          configuration.push_token
+      ].compact.size == 2
     end
 
     def client

@@ -25,8 +25,9 @@ class Databox::Client
     Databox.configuration.push_token
   end
 
+  # Sends data to actual end-point.
   def raw_push(path='/', data=nil)
-    handle self.class.post(path, data.nil? ? {} : JSON.dump({data: data}))
+    handle self.class.post(path, data.nil? ? {} : {body: JSON.dump({data: data})})
   end
 
   def handle(response)
@@ -34,16 +35,23 @@ class Databox::Client
   end
 
   def process_kpi(options={})
-    #TODO: Implement this
+    options.delete_if { |k, _| [:date, 'date'].include?(k) }
+
+    %i{key value}.each do |k|
+      raise("Missing '#{k}'") if (options[k] || options[k.to_s]).nil?
+    end
+
+    options["$#{(options['key'] || options[:key])}"] = options['value'] || options[:value]
+    options.delete_if { |k, _| [:key, 'key', :value, 'value'].include?(k) }
+    options
   end
 
   def push(key, value, date=nil)
-    #TODO: Implement this
-
+    raw_push('/', [process_kpi({key: key, value: value, date: date})])['status'] == 'ok'
   end
 
   def insert_all(rows=[])
-    #TODO: Implement this
+    raw_push('/', rows.map {|r| process_kpi(r) })['status'] == 'ok'
   end
 
   def last_push
