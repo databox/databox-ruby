@@ -24,11 +24,11 @@ Before pushing data to Databox you have to initialize it with token.
 
 ```ruby
 Databox.configure do |c|
-    c.push_token   = "YOUR_TOKEN"
+  c.push_token   = "YOUR_TOKEN"
 end
 ```
 
-## Usage 
+## Usage
 
 Pushing data directly to Databox with help of `push` method:
 

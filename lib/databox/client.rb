@@ -54,7 +54,7 @@ class Databox::Client
     raw_push('/', rows.map {|r| process_kpi(r) })['status'] == 'ok'
   end
 
-  def last_push
-    raw_push '/lastpushes/1'
+  def last_push(n=1)
+    raw_push "/lastpushes/#{n}"
   end
 end
