@@ -35,9 +35,13 @@ Pushing data directly to Databox with help of `push` method:
 ```ruby
 client = Databox::Client.new
 
-client.push('sales.total', 3000)
-client.push('temp.boston', 52.0)
-client.push('temp.boston', 52.0, '2015-01-01 17:00:00')
+client.push(key: 'sales.total', value: 3000)
+client.push(key: 'temp.boston', value: 52.0)
+client.push(key: 'temp.boston', value: 52.0, date: '2015-01-01 17:00:00')
+client.push(key: 'temp.boston', value: 52.0, attributes: {
+    location: 'boston-south'
+})
+
 ```
 
 Inserting multiple matrices with one `insert_all`:
@@ -72,6 +76,10 @@ client.last_push
 - [Databox Web App](https://app.databox.com/)
 - [Databox Developers Portal](https://developers.databox.com/)
 
+## Author & License
+
+- [Oto Brglez](https://github.com/otobrglez)
+- Comes with `MIT` license and terms
 
 [travis-badge]: https://secure.travis-ci.org/databox/databox-ruby.png?branch=v2
 [travis]: http://travis-ci.org/databox/databox-ruby
