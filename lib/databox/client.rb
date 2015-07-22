@@ -8,6 +8,8 @@ class Databox::Client
   debug_output if [1, "1"].include?(ENV["HTTPARTY_DEBUG"])
   default_timeout 1 if ENV["DATABOX_MODE"] == "test"
 
+  attr_accessor :last_push_content
+
   def initialize
     Databox.configure unless Databox.configured?
 
@@ -43,15 +45,24 @@ class Databox::Client
 
     options["$#{(options['key'] || options[:key])}"] = options['value'] || options[:value]
     options.delete_if { |k, _| [:key, 'key', :value, 'value'].include?(k) }
+
+    attributes = options[:attributes] || options['attributes']
+    unless attributes.nil?
+      [:attributes, 'attributes'].each {|k| options.delete(k) }
+      attributes.each { |k,v| options[k] = v }
+    end
+
     options
   end
 
-  def push(key, value, date=nil)
-    raw_push('/', [process_kpi({key: key, value: value, date: date})])['status'] == 'ok'
+  def push(kpi={})
+    self.last_push_content = raw_push('/', [process_kpi(kpi)])
+    self.last_push_content['status'] == 'ok'
   end
 
   def insert_all(rows=[])
-    raw_push('/', rows.map {|r| process_kpi(r) })['status'] == 'ok'
+    self.last_push_content = raw_push('/', rows.map {|r| process_kpi(r) })
+    self.last_push_content['status'] == 'ok'
   end
 
   def last_push(n=1)
