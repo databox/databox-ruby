@@ -1,6 +1,7 @@
 # Databox bindings for Ruby
 
 [![Build Status][travis-badge]][travis]
+[![Gem Version](https://badge.fury.io/rb/databox.svg)](https://badge.fury.io/rb/databox)
 
 Ruby Gem for [Databox](http://databox.com/) - Mobile Executive Dashboard.
 
