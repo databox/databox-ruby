@@ -10,7 +10,7 @@ end
 client = Databox::Client.new()
 
 3.times do |t|
-	client.push("example.ruby", t*100, (DateTime.now - t).strftime('%Y-%m-%d'))
+	client.push(key: "example.ruby", value: t*100, date:(DateTime.now - t).strftime('%Y-%m-%d'))
 end
 
 pp client.last_push(3)

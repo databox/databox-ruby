@@ -66,6 +66,6 @@ class Databox::Client
   end
 
   def last_push(n=1)
-    raw_push "/lastpushes/#{n}"
+    handle self.class.get("/lastpushes/#{n}")
   end
 end
