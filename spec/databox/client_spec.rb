@@ -20,24 +20,24 @@ describe Databox::Client do
     it { expect(client.push(key: 'sales.total', value: 2000)).to eq true }
   end
 
-  context 'push w/ attributes' do
-    it {
-      payload = {
-          key: 'test',
-          value: 200,
-          attributes: {
-              'me': 'Oto'
-          }
-      }
-
-      expect(client).to receive(:raw_push)
-                            .with('/', [
-                                         {"$test" => 200, :me => "Oto"}
-                                     ])
-                            .once.and_call_original
-      expect(client.push(payload)).to eq true
-    }
-  end
+  # context 'push w/ attributes' do
+  #   it {
+  #     payload = {
+  #         key: 'test',
+  #         value: 200,
+  #         attributes: {
+  #             'me': 'Oto'
+  #         }
+  #     }
+  #
+  #     expect(client).to receive(:raw_push)
+  #                           .with('/', [
+  #                                        {"$test" => 200, :me => "Oto"}
+  #                                    ])
+  #                           .once.and_call_original
+  #     expect(client.push(payload)).to eq true
+  #   }
+  # end
 
   context 'insert_all' do
     it { expect { client.insert_all([
