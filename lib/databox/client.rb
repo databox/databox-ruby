@@ -4,7 +4,8 @@ require 'json'
 class Databox::Client
   include HTTParty
   format :json
-  headers 'User-Agent' => "Databox/#{Databox::VERSION} (Ruby)"
+  headers 'User-Agent' => "databox-ruby/#{Databox::VERSION}"
+  headers 'Accept' => "application/vnd.databox.v#{Databox::VERSION.split('.')[0]}+json"
   debug_output if [1, "1"].include?(ENV["HTTPARTY_DEBUG"])
   default_timeout 1 if ENV["DATABOX_MODE"] == "test"
 
@@ -57,15 +58,15 @@ class Databox::Client
 
   def push(kpi={})
     self.last_push_content = raw_push('/', [process_kpi(kpi)])
-    self.last_push_content['status'] == 'ok'
+    self.last_push_content.key?('id')
   end
 
   def insert_all(rows=[])
     self.last_push_content = raw_push('/', rows.map {|r| process_kpi(r) })
-    self.last_push_content['status'] == 'ok'
+    self.last_push_content.key?('id')
   end
 
   def last_push(n=1)
-    handle self.class.get("/lastpushes/#{n}")
+    handle self.class.get("/lastpushes?limit=#{n}")
   end
 end
