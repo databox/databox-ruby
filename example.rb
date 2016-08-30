@@ -13,5 +13,6 @@ client = Databox::Client.new()
 	client.push(key: "example.ruby", value: t*100, date:(DateTime.now - t).strftime('%Y-%m-%d'))
 end
 
-pp client.last_push(3)
+client.push(key: "example.ruby.unit", value: 100, unit: "USD")
 
+pp client.last_push(3)
