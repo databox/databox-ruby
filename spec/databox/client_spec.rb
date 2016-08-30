@@ -8,7 +8,7 @@ describe Databox::Client do
     end
 
     allow_any_instance_of(Databox::Client).to receive(:raw_push)\
-      .and_return({'status' => 'ok'})
+      .and_return({'id' => '147251'})
   end
 
   let!(:client) { Databox::Client.new }
