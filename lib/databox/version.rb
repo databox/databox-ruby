@@ -1,3 +1,3 @@
 module Databox
-  VERSION = '0.2.3'
+  VERSION = '2.0.1'
 end
