@@ -73,14 +73,15 @@ client.last_push
 ```
 
 ## Resources
-
 - [Databox Web App](https://app.databox.com/)
 - [Databox Developers Portal](https://developers.databox.com/)
 
 ## Author & License
-
 - [Oto Brglez](https://github.com/otobrglez)
-- Comes with `MIT` license and terms
+- [Vlada Petrović](https://github.com/VladaPetrovic)
+
+## License
+- Comes with `MIT` license and terms.
 
 [travis-badge]: https://secure.travis-ci.org/databox/databox-ruby.png?branch=v2
 [travis]: http://travis-ci.org/databox/databox-ruby
