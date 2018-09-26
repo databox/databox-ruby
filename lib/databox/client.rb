@@ -38,7 +38,6 @@ class Databox::Client
   end
 
   def process_kpi(options={})
-    options.delete_if { |k, _| [:date, 'date'].include?(k) }
 
     %i{key value}.each do |k|
       raise("Missing '#{k}'") if (options[k] || options[k.to_s]).nil?
