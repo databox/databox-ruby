@@ -1,0 +1,94 @@
+name: Generate SDK Code
+on:
+  repository_dispatch:
+    types: [publish_sdk]
+env:
+  GENERATOR_VERISON: "7.6.0" 
+  CONFIG_FILE: "sdk-gen-config.json"
+jobs:
+  sdk:
+    name: Generate SDK code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Get Latest Release
+        id: latest-version
+        uses: pozetroninc/github-action-get-latest-release@v0.7.0
+        with:
+          owner: ${{ github.repository_owner }}
+          repo:  databox-csharp
+          excludes: prerelease, draft
+          token: ${{ secrets.PAT_APPROVE_PR }}
+
+      - name: Determine Version
+        id: version
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const version = '${{ steps.latest-version.outputs.release }}';
+            const parts = version.split('.');
+            switch('${{ github.event.client_payload.labels }}') {
+              case 'patch':
+                parts[2] = parseInt(parts[2]) + 1;
+                break;
+              case 'minor':
+                parts[1] = parseInt(parts[1]) + 1;
+                break;
+              case 'major':
+                parts[0] = parseInt(parts[0]) + 1;
+                break;
+              default:
+                parts[2] = parseInt(parts[2]) + 1;
+                break;
+            }
+            const newVersion = parts.join('.');
+            return newVersion;
+       
+      - name: Download OpenAPI Generator
+        run: |
+          curl https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${{ env.GENERATOR_VERISON }}/openapi-generator-cli-${{ env.GENERATOR_VERISON }}.jar -o ${{ runner.temp }}/openapi-generator-cli.jar
+
+      - name: Download OpenAPI Specification
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ github.event.client_payload.openapi_spec }}
+          path: ${{ runner.temp }}/openapispec
+          repository: databox/data-link
+          github-token: ${{ secrets.PAT_APPROVE_PR }}
+          run-id: ${{ github.event.client_payload.run_id }}
+
+      - name: Remove old SDK
+        run: rm -rf src/*
+
+      - name: Set API and SDK versions
+        run: |
+          cp .github/${{ env.CONFIG_FILE }} ${{ runner.temp }}/${{ env.CONFIG_FILE }}
+          
+          #set SDK version
+          sed -i "s/{VERSION}/${{ steps.version.outputs.result }}/g" ${{ runner.temp }}/${{ env.CONFIG_FILE }}
+          
+          #set API version
+          sed -i 's/version: "1.0"/version: ${{ github.event.client_payload.version  }}/g' ${{ runner.temp }}/openapispec/openapi.yml
+
+      - name: Generate SDK
+        run: |
+          java --version
+          java -jar ${{ runner.temp }}/openapi-generator-cli.jar generate -i ${{ runner.temp }}/openapispec/openapi.yml -g ruby -o ./src -c ${{ runner.temp }}/${{ env.CONFIG_FILE }} --skip-validate-spec
+          cp ./src/README.md ./README.md
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: master
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: release data-link SDK'
+          title: '[SDK release] Generated SDK code based on data-link ${{ github.event.client_payload.version }} API changes'
+          branch: 'release/${{ github.event.client_payload.version }}/${{ github.event.client_payload.timestamp }}'
+          body: >            
+            This is a release of the SDK based on the API changes for `data-link` [${{ github.event.client_payload.version }}](${{ github.event.client_payload.release_url }}).
+          labels: |
+            automated
+            ${{ github.event.client_payload.labels || 'patch' }}

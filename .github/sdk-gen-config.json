@@ -1,0 +1,7 @@
+{
+  "gemName": "databox",
+  "gemVersion": "{VERSION}", 
+  "gemAuthor": "Databox",
+  "gemDescription": "SDK Client for using Databox Push API feature",
+  "gemHomepage": "https://databox.com/"
+}

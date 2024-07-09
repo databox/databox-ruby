@@ -1,0 +1,16 @@
+name: Pull Request Labels
+
+on:
+  pull_request:
+    types: [opened, reopened, labeled, unlabeled, edited, synchronize]
+    branches: [master]
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: exactly
+          count: 1
+          labels: "major,minor,patch"
