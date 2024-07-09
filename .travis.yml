@@ -1,4 +1,0 @@
-install:
-  - "travis_retry bundle install"
-script:
-  - "bundle exec rspec --format doc --color"
