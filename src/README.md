@@ -1,4 +1,4 @@
-# databox
+# databox 
 
 Databox - the Ruby gem for the Static OpenAPI document of Push API resource
 
