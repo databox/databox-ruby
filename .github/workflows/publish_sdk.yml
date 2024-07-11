@@ -5,6 +5,7 @@ on:
       - master
     paths:
       - 'src/**'
+
 jobs:
   release_draft:
     name: Create release draft
@@ -25,23 +26,20 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ruby
 
-      - name: Configure git
-        run : |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
-      - name: Release Gem
-        uses: cadwallion/publish-rubygems-action@master
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_TOKEN}}
-          RELEASE_COMMAND: rake release
-          WORKDIR: src
-          
+      - uses: rubygems/release-gem@v1
+                
   release_publish:
     name: Publish release
     runs-on: ubuntu-latest
