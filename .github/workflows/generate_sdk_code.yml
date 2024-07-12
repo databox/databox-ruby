@@ -60,7 +60,9 @@ jobs:
           run-id: ${{ github.event.client_payload.run_id }}
 
       - name: Remove old SDK
-        run: rm -rf src/*
+        run: |
+          rm -rf src/*
+          rm -rf docs/*
 
       - name: Set API and SDK versions
         run: |
@@ -77,6 +79,7 @@ jobs:
           java --version
           java -jar ${{ runner.temp }}/openapi-generator-cli.jar generate -i ${{ runner.temp }}/openapispec/openapi.yml -g ruby -o ./src -c ${{ runner.temp }}/${{ env.CONFIG_FILE }} --skip-validate-spec
           cp ./src/README.md ./README.md
+          cp -r ./src/docs ./docs
 
       - name: Create Pull Request
         id: cpr
